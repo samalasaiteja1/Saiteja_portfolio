@@ -1,0 +1,147 @@
+<%- include('../partials/head') %>
+  <%- include('../partials/navbar') %>
+
+    <section class="page-hero">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6" data-aos="fade-right">
+            <span class="section-tag">About Me</span>
+            <h1 class="page-title section-title-gradient">Know Who I Am</h1>
+            <p class="lead">A passionate developer dedicated to building impactful digital experiences.</p>
+          </div>
+          <div class="col-lg-6 text-center" data-aos="fade-left">
+            <div class="profile-image-wrapper profile-image-sm profile-frame">
+              <div class="profile-ring" aria-hidden="true"></div>
+              <div class="profile-glow"></div>
+              <img src="<%= site.profileImage %>" alt="<%= site.name %>" class="profile-image">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-7" data-aos="fade-up">
+            <div class="glass-card p-4 p-lg-5">
+              <h3 class="mb-4">Professional Introduction</h3>
+              <p>
+                I am <%= site.name %>, a <%= site.role %> with a strong foundation in software engineering,
+                    cloud technologies, and data platforms. I enjoy turning complex problems into simple, beautiful,
+                    and intuitive solutions.
+              </p>
+              <p>
+                With hands-on experience across the full development lifecycle, I build scalable applications,
+                automate deployments, and deliver data-driven solutions that create real business value.
+              </p>
+              <h4 class="mt-4 mb-3">Career Objective</h4>
+              <p>
+                To leverage my technical expertise in full-stack development, cloud infrastructure, and data
+                engineering to contribute to innovative projects while continuously growing as a technology
+                professional.
+              </p>
+              <% if (site.resume) { %>
+                <a href="/resume/download" class="btn btn-primary btn-glow mt-3" download="SAMALA_SAITEJA.pdf">
+                  <i class="fas fa-download me-2"></i>Download Resume
+                </a>
+                <% } %>
+            </div>
+          </div>
+          <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
+            <div class="glass-card p-4">
+              <h4 class="mb-4"><i class="fas fa-graduation-cap text-accent me-2"></i>Education</h4>
+              <% if (typeof education !=='undefined' && education && education.length) { %>
+                <% education.forEach((edu, index)=> { %>
+                  <div class="timeline-item">
+                    <h5>
+                      <%= edu.degree %>
+                    </h5>
+                    <p class="text-muted mb-1">
+                      <%= edu.fieldOfStudy %> — <%= edu.institution %>
+                    </p>
+                    <span class="badge bg-accent-soft">
+                      <%= edu.duration %>
+                    </span>
+                  </div>
+                  <% if (index < education.length - 1) { %>
+                    <hr>
+                    <% } %>
+                      <% }) %>
+                        <% } else { %>
+                          <p class="text-muted small">No education details added yet.</p>
+                          <% } %>
+                            <h4 class="mb-3 mt-4"><i class="fas fa-tools text-accent me-2"></i>Technologies</h4>
+                            <div class="tech-tags">
+                              <% if (skills && skills.length) { %>
+                                <% skills.slice(0, 12).forEach(skill=> { %>
+                                  <span class="tech-tag">
+                                    <%= skill.name %>
+                                  </span>
+                                  <% }) %>
+                                    <% } else { %>
+                                      <span class="tech-tag">Node.js</span>
+                                      <span class="tech-tag">Express.js</span>
+                                      <span class="tech-tag">MongoDB</span>
+                                      <span class="tech-tag">Azure</span>
+                                      <span class="tech-tag">React</span>
+                                      <% } %>
+                            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding section-dark">
+      <div class="container">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+          <span class="section-tag">Experience</span>
+          <h2 class="section-title">My Journey</h2>
+        </div>
+         <div class="timeline">
+          <div class="timeline-entry" data-aos="fade-up">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">
+              <span class="timeline-date">2024 - Present</span>
+              <h4>Full Stack Developer</h4>
+              <p class="text-muted">
+                Spearheading the engineering and architecture of robust, end-to-end full-stack web applications. 
+                Designing secure, high-performance RESTful APIs and modern user interfaces with responsive 
+                glassmorphism principles. Actively optimizing database indexing and structured queries in MongoDB to 
+                improve server response speeds by 40% and ensure absolute data consistency across all services.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-entry" data-aos="fade-up" data-aos-delay="100">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">
+              <span class="timeline-date">2023 - 2024</span>
+              <h4>Cloud & DevOps Engineer</h4>
+              <p class="text-muted">
+                Orchestrated automated infrastructure deployments and secure cloud architectures on Azure. Designed and managed 
+                Infrastructure as Code (IaC) templates using Terraform to maintain completely reproducible environments. Built 
+                seamless CI/CD pipelines with GitHub Actions and implemented robust automated monitoring solutions to guarantee 
+                maximum application uptime and zero-downtime releases.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-entry" data-aos="fade-up" data-aos-delay="200">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">
+              <span class="timeline-date">2022 - 2023</span>
+              <h4>Data Engineering Intern</h4>
+              <p class="text-muted">
+                Developed large-scale data ingestion, transformation, and warehouse analytics pipelines. Utilized 
+                PySpark and Azure Databricks to clean and aggregate massive unstructured datasets into actionable analytical 
+                dashboards. Designed highly efficient data extraction tasks and assisted in migrating legacy database systems 
+                into modernized MongoDB document storage models.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <%- include('../partials/footer') %>
+      <%- include('../partials/scripts') %>

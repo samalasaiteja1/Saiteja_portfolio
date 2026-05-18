@@ -1,0 +1,100 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar') %>
+
+<section class="page-hero">
+  <div class="container text-center">
+    <span class="section-tag" data-aos="fade-up">Contact</span>
+    <h1 class="page-title section-title-gradient" data-aos="fade-up">Get In Touch</h1>
+    <p class="lead" data-aos="fade-up">Let's discuss your next project</p>
+  </div>
+</section>
+
+<section class="section-padding">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-5" data-aos="fade-right">
+        <div class="glass-card p-4 p-lg-5 h-100">
+          <h3 class="mb-4">Contact Information</h3>
+          <div class="contact-info-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:<%= site.email %>"><%= site.email %></a>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <strong>Phone</strong>
+              <span><%= site.phone %></span>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong>Location</strong>
+              <span><%= site.location %></span>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <i class="fab fa-linkedin-in"></i>
+            <div>
+              <strong>LinkedIn</strong>
+              <a href="<%= site.linkedin %>" target="_blank" rel="noopener">Connect on LinkedIn</a>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <i class="fab fa-github"></i>
+            <div>
+              <strong>GitHub</strong>
+              <a href="<%= site.github %>" target="_blank" rel="noopener">View GitHub Profile</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="glass-card p-4 p-lg-5">
+          <h3 class="mb-4">Send a Message</h3>
+          <form action="/contact" method="POST" class="contact-form">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Name</label>
+                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="your@email.com" required>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Subject</label>
+                <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Message</label>
+                <textarea name="message" class="form-control" rows="5" placeholder="Your message..." required></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-glow">
+                  <i class="fas fa-paper-plane me-2"></i>Send Message
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5" data-aos="fade-up">
+      <div class="col-12">
+        <div class="map-container glass-card overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.1160982345!2d72.74109995708984!3d19.08219784031865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648cad!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/scripts') %>

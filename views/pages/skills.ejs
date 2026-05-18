@@ -1,0 +1,46 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar') %>
+
+<section class="page-hero">
+  <div class="container text-center">
+    <span class="section-tag" data-aos="fade-up">Skills</span>
+    <h1 class="page-title section-title-gradient" data-aos="fade-up">Technical Expertise</h1>
+    <p class="lead" data-aos="fade-up">Technologies and tools I work with daily</p>
+  </div>
+</section>
+
+<section class="section-padding">
+  <div class="container">
+    <% if (categories && categories.length) { %>
+      <div class="skill-filters mb-5 text-center" data-aos="fade-up">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <% categories.forEach(cat => { %>
+          <button class="filter-btn" data-filter="<%= cat.toLowerCase() %>"><%= cat %></button>
+        <% }) %>
+      </div>
+    <% } %>
+
+    <% if (skills && skills.length) { %>
+      <div class="row g-4 justify-content-center" id="skillsGrid">
+        <% skills.forEach((skill, i) => { %>
+          <div class="col-6 col-md-4 col-lg-3 skill-item" data-category="<%= skill.category.toLowerCase() %>" data-aos="zoom-in" data-aos-delay="<%= (i % 8) * 50 %>">
+            <div class="skill-card tilt-card">
+              <i class="<%= skill.icon %>"></i>
+              <h5><%= skill.name %></h5>
+              <span><%= skill.category %></span>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <div class="empty-state text-center" data-aos="fade-up">
+        <i class="fas fa-code fa-3x mb-3 text-muted"></i>
+        <h4>No skills added yet</h4>
+        <p class="text-muted">Skills will appear here once added from the admin panel.</p>
+      </div>
+    <% } %>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/scripts') %>

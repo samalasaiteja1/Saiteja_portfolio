@@ -1,0 +1,89 @@
+<%- include('../partials/admin-layout-start') %>
+
+<div class="row g-4">
+  <div class="col-lg-4">
+    <div class="glass-card p-4">
+      <h5 class="mb-3"><i class="fas fa-plus-circle me-2"></i>Add Skill</h5>
+      <form action="/admin/skills" method="POST">
+        <div class="mb-3">
+          <input type="text" name="name" class="form-control" placeholder="Enter Skill Name" required>
+        </div>
+        <div class="mb-3">
+          <input type="text" name="category" class="form-control" placeholder="Enter Category" required>
+        </div>
+        <div class="mb-3">
+          <input type="text" name="icon" class="form-control" placeholder="Enter Font Awesome Icon Class" required>
+          <small class="text-muted">e.g. fab fa-node-js</small>
+        </div>
+        <button type="submit" class="btn btn-primary w-100"><i class="fas fa-plus me-1"></i>Add Skill</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-lg-8">
+    <div class="glass-card p-4">
+      <h5 class="mb-3">All Skills (<%= skills.length %>)</h5>
+      <div class="table-responsive">
+        <table class="table table-dark table-hover admin-table">
+          <thead>
+            <tr><th>Icon</th><th>Name</th><th>Category</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+            <% skills.forEach(skill => { %>
+              <tr>
+                <td><i class="<%= skill.icon %> fa-lg"></i></td>
+                <td><%= skill.name %></td>
+                <td><span class="badge bg-accent-soft"><%= skill.category %></span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editSkill<%= skill._id %>">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <form action="/admin/skills/<%= skill._id %>?_method=DELETE" method="POST" class="d-inline" onsubmit="return confirm('Delete this skill?')">
+                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+                  </form>
+                </td>
+              </tr>
+            <% }) %>
+            <% if (!skills.length) { %>
+              <tr><td colspan="4" class="text-center text-muted">No skills yet</td></tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% skills.forEach(skill => { %>
+<div class="modal fade" id="editSkill<%= skill._id %>" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark border-secondary">
+      <div class="modal-header border-secondary">
+        <h5 class="modal-title">Edit Skill</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <form action="/admin/skills/<%= skill._id %>?_method=PUT" method="POST">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Skill Name</label>
+            <input type="text" name="name" class="form-control" value="<%= skill.name %>" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Category</label>
+            <input type="text" name="category" class="form-control" value="<%= skill.category %>" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Icon Class</label>
+            <input type="text" name="icon" class="form-control" value="<%= skill.icon %>" required>
+          </div>
+        </div>
+        <div class="modal-footer border-secondary">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<% }) %>
+
+<%- include('../partials/admin-layout-end') %>

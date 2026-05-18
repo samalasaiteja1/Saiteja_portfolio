@@ -1,0 +1,19 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="row align-items-center py-4">
+      <!-- On mobile, this will render second (bottom). On desktop, it will render first (left). -->
+      <div class="col-md-6 text-center text-md-start mb-3 mb-md-0 order-2 order-md-1">
+        <p class="mb-0">&copy; <%= new Date().getFullYear() %> <%= site.name %>. All rights reserved.</p>
+      </div>
+      <!-- On mobile, this will render first (top). On desktop, it will render second (right). -->
+      <div class="col-md-6 text-center text-md-end mb-3 mb-md-0 order-1 order-md-2">
+        <a href="<%= site.github %>" target="_blank" rel="noopener" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="<%= site.linkedin %>" target="_blank" rel="noopener" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:<%= site.email %>" class="social-link"><i class="fas fa-envelope"></i></a>
+        <% if (site.instagram) { %>
+          <a href="<%= site.instagram %>" target="_blank" rel="noopener" class="social-link"><i class="fab fa-instagram"></i></a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</footer>

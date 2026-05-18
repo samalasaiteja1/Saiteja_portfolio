@@ -1,0 +1,51 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar') %>
+
+<section class="page-hero">
+  <div class="container text-center">
+    <span class="section-tag" data-aos="fade-up">Certifications</span>
+    <h1 class="page-title section-title-gradient" data-aos="fade-up">Credentials & Achievements</h1>
+    <p class="lead" data-aos="fade-up">Professional certifications I've earned</p>
+  </div>
+</section>
+
+<section class="section-padding">
+  <div class="container">
+    <% if (certifications && certifications.length) { %>
+      <div class="row g-4">
+        <% certifications.forEach((cert, i) => { %>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="<%= (i % 6) * 50 %>">
+            <div class="cert-card glass-card h-100">
+              <div class="cert-image">
+                <% if (cert.certificateImage) { %>
+                  <img src="<%= cert.certificateImage %>" alt="<%= cert.title %>">
+                <% } else { %>
+                  <div class="cert-placeholder"><i class="fas fa-certificate"></i></div>
+                <% } %>
+              </div>
+              <div class="cert-body p-4">
+                <h5><%= cert.title %></h5>
+                <p class="text-muted mb-1"><i class="fas fa-building me-2"></i><%= cert.organization %></p>
+                <p class="text-accent mb-3"><i class="fas fa-calendar me-2"></i><%= cert.issueDate %></p>
+                <% if (cert.certificateLink) { %>
+                  <a href="<%= cert.certificateLink %>" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                    <i class="fas fa-external-link-alt me-1"></i>View Certificate
+                  </a>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <div class="empty-state text-center" data-aos="fade-up">
+        <i class="fas fa-award fa-3x mb-3 text-muted"></i>
+        <h4>No certifications yet</h4>
+        <p class="text-muted">Certifications will appear here once added from the admin panel.</p>
+      </div>
+    <% } %>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/scripts') %>

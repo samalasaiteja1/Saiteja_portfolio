@@ -1,0 +1,33 @@
+<aside class="admin-sidebar" id="adminSidebar">
+  <div class="sidebar-header">
+    <a href="/admin/dashboard" class="sidebar-brand">
+      <i class="fas fa-shield-alt"></i> Admin Panel
+    </a>
+    <button class="sidebar-close d-lg-none" id="sidebarClose"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="sidebar-profile text-center py-4">
+    <img src="<%= site.profileImage %>" alt="Admin" class="admin-profile-img">
+    <h6 class="mt-2 mb-0"><%= admin?.username || 'Admin' %></h6>
+    <small class="text-muted"><%= admin?.email || '' %></small>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="/admin/dashboard" class="sidebar-link <%= title === 'Admin Dashboard' ? 'active' : '' %>">
+      <i class="fas fa-tachometer-alt"></i> Dashboard
+    </a>
+    <a href="/admin/skills" class="sidebar-link <%= title === 'Manage Skills' ? 'active' : '' %>">
+      <i class="fas fa-code"></i> Skills
+    </a>
+    <a href="/admin/projects" class="sidebar-link <%= title === 'Manage Projects' ? 'active' : '' %>">
+      <i class="fas fa-project-diagram"></i> Projects
+    </a>
+    <a href="/admin/certifications" class="sidebar-link <%= title === 'Manage Certifications' ? 'active' : '' %>">
+      <i class="fas fa-certificate"></i> Certifications
+    </a>
+    <a href="/admin/education" class="sidebar-link <%= title === 'Manage Education' ? 'active' : '' %>">
+      <i class="fas fa-graduation-cap"></i> Education
+    </a>
+    <hr>
+    <a href="/" class="sidebar-link" target="_blank"><i class="fas fa-external-link-alt"></i> View Site</a>
+    <a href="/admin/logout" class="sidebar-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </nav>
+</aside>

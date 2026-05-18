@@ -1,0 +1,181 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar') %>
+
+<section class="hero-section" id="home">
+  <div class="hero-mesh" aria-hidden="true"></div>
+  <div class="hero-bg-animation" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+  <div class="container position-relative z-2">
+    <div class="row align-items-center min-vh-100 py-5">
+      <div class="col-lg-6 order-2 order-lg-1" data-aos="fade-right">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          Open to new opportunities
+        </div>
+        <p class="hero-greeting">Hello, I'm</p>
+        <h1 class="hero-title"><%= site.name %></h1>
+        <h2 class="hero-subtitle">
+          I'm a <span id="typedText" class="typed-text"></span>
+        </h2>
+        <p class="hero-description">
+          Passionate developer crafting elegant, scalable solutions with modern technologies.
+          Specialized in full-stack development, cloud infrastructure, and data engineering.
+        </p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="stat-number" data-count="<%= stats.skills %>">0</span>
+            <small>Skills</small>
+          </div>
+          <div class="hero-stat">
+            <span class="stat-number" data-count="<%= stats.projects %>">0</span>
+            <small>Projects</small>
+          </div>
+          <div class="hero-stat">
+            <span class="stat-number" data-count="<%= stats.certifications %>">0</span>
+            <small>Certifications</small>
+          </div>
+        </div>
+        <div class="hero-buttons">
+          <% if (site.resume) { %>
+            <a href="/resume/download" class="btn btn-primary btn-glow btn-shine" download="SAMALA_SAITEJA.pdf">
+              <i class="fas fa-download me-2"></i>Download Resume
+            </a>
+          <% } %>
+          <a href="/contact" class="btn btn-outline-light btn-glow-outline">
+            <i class="fas fa-paper-plane me-2"></i>Contact Me
+          </a>
+          <a href="/projects" class="btn btn-link text-accent hero-link-arrow">View Projects <i class="fas fa-arrow-right ms-1"></i></a>
+        </div>
+        <div class="hero-social mt-4">
+          <a href="<%= site.github %>" target="_blank" rel="noopener" class="social-icon"><i class="fab fa-github"></i></a>
+          <a href="<%= site.linkedin %>" target="_blank" rel="noopener" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:<%= site.email %>" class="social-icon"><i class="fas fa-envelope"></i></a>
+          <a href="<%= site.twitter %>" target="_blank" rel="noopener" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <% if (site.instagram) { %>
+            <a href="<%= site.instagram %>" target="_blank" rel="noopener" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <% } %>
+        </div>
+      </div>
+      <div class="col-lg-6 order-1 order-lg-2 text-center mb-5 mb-lg-0" data-aos="fade-left">
+        <div class="profile-image-wrapper profile-frame tilt-card" id="heroProfile">
+          <div class="profile-ring" aria-hidden="true"></div>
+          <div class="profile-glow"></div>
+          <img src="<%= site.profileImage %>" alt="<%= site.name %>" class="profile-image">
+          <div class="profile-float-card profile-float-1">
+            <i class="fas fa-code"></i>
+            <span>Clean Code</span>
+          </div>
+          <div class="profile-float-card profile-float-2">
+            <i class="fas fa-rocket"></i>
+            <span>Fast Delivery</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="#highlights" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
+</section>
+
+<section class="section-padding section-dark" id="highlights">
+  <div class="container">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <span class="section-tag">Highlights</span>
+      <h2 class="section-title section-title-gradient">What I Do</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-card glass-card tilt-card">
+          <div class="feature-icon-wrap"><i class="fas fa-code feature-icon"></i></div>
+          <h4>Full Stack Development</h4>
+          <p>Building responsive web applications with Node.js, Express, and modern frontend frameworks.</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="feature-card glass-card tilt-card">
+          <div class="feature-icon-wrap"><i class="fas fa-cloud feature-icon"></i></div>
+          <h4>Cloud & DevOps</h4>
+          <p>Deploying and managing infrastructure on Azure with Terraform, Jenkins, and CI/CD pipelines.</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="feature-card glass-card tilt-card">
+          <div class="feature-icon-wrap"><i class="fas fa-database feature-icon"></i></div>
+          <h4>Data Engineering</h4>
+          <p>Processing large-scale data with PySpark, Databricks, and MongoDB for actionable insights.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% if (skills && skills.length) { %>
+<section class="section-padding">
+  <div class="container">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <span class="section-tag">Skills</span>
+      <h2 class="section-title section-title-gradient">Tech Stack</h2>
+      <a href="/skills" class="btn btn-sm btn-outline-primary mt-3 btn-shine">View All Skills</a>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <% skills.forEach((skill, i) => { %>
+        <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in" data-aos-delay="<%= i * 50 %>">
+          <div class="skill-card tilt-card">
+            <i class="<%= skill.icon %>"></i>
+            <h5><%= skill.name %></h5>
+            <span><%= skill.category %></span>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<% if (projects && projects.length) { %>
+<section class="section-padding section-dark">
+  <div class="container">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <span class="section-tag">Portfolio</span>
+      <h2 class="section-title section-title-gradient">Featured Projects</h2>
+      <a href="/projects" class="btn btn-sm btn-outline-primary mt-3 btn-shine">View All Projects</a>
+    </div>
+    <div class="row g-4">
+      <% projects.forEach((project, i) => { %>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="<%= i * 100 %>">
+          <div class="project-card tilt-card">
+            <div class="project-image">
+              <% if (project.image) { %>
+                <img src="<%= project.image %>" alt="<%= project.title %>">
+              <% } else { %>
+                <div class="project-placeholder"><i class="fas fa-laptop-code"></i></div>
+              <% } %>
+              <div class="project-overlay">
+                <% if (project.liveLink) { %>
+                  <a href="<%= project.liveLink %>" target="_blank" rel="noopener" class="btn btn-sm btn-light"><i class="fas fa-external-link-alt"></i></a>
+                <% } %>
+                <% if (project.githubLink) { %>
+                  <a href="<%= project.githubLink %>" target="_blank" rel="noopener" class="btn btn-sm btn-light"><i class="fab fa-github"></i></a>
+                <% } %>
+              </div>
+            </div>
+            <div class="project-body">
+              <h5><%= project.title %></h5>
+              <p><%= project.description.substring(0, 100) %>...</p>
+              <div class="tech-badges">
+                <% project.technologies.split(',').slice(0, 3).forEach(tech => { %>
+                  <span class="badge"><%= tech.trim() %></span>
+                <% }) %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<%- include('../partials/footer') %>
+<%- include('../partials/scripts') %>

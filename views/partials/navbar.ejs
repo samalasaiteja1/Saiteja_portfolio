@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg fixed-top glass-nav" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="/">
+      <span class="brand-accent">&lt;</span>Portfolio<span class="brand-accent">/&gt;</span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+        <li class="nav-item"><a class="nav-link <%= title === 'Home' ? 'active' : '' %>" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link <%= title === 'About' ? 'active' : '' %>" href="/about">About</a></li>
+        <li class="nav-item"><a class="nav-link <%= title === 'Skills' ? 'active' : '' %>" href="/skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link <%= title === 'Projects' ? 'active' : '' %>" href="/projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link <%= title === 'Certifications' ? 'active' : '' %>" href="/certifications">Certifications</a></li>
+        <li class="nav-item ms-lg-2">
+          <a href="/contact" class="btn btn-sm btn-nav-cta d-none d-lg-inline-flex">Hire Me</a>
+        </li>
+        <li class="nav-item ms-lg-1">
+          <button class="btn btn-sm btn-theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
